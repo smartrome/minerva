@@ -13,4 +13,4 @@ for enriching the cultural experience in the Eternal City.</b>
   - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"> <b>Email</b>: raziehakbari409@gmail.com
 
 <b>Updates:</b>
-  - Take a look at our project proposal on Slideshare! <a href="here">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>
+  - Take a look at our project proposal on Slideshare! <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>
