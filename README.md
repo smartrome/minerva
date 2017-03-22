@@ -1,7 +1,6 @@
-## Welcome to our project page SMART-ROME! We are still building it!
-
-An interactive Android-based solution
-for enriching the cultural experience in the Eternal City.
+## Welcome to our project page Smart Rome. (We are still building it)
+<b>An interactive Android-based solution
+for enriching the cultural experience in the Eternal City.</b>
 
 <b>Objectives:</b>
   - Development of an application which takes the camera mirror
@@ -14,8 +13,8 @@ for enriching the cultural experience in the Eternal City.
 
 <b>Responsibles of the project:</b>
 - Julio César Carrasquel
-  - Linkedin: https://www.linkedin.com/in/julio-c%C3%A9sar-carrasquel-b5729844/
+  - Linkedin:  <a href="https://www.linkedin.com/in/julio-c%C3%A9sar-carrasquel-b5729844/">https://www.linkedin.com/in/julio-césar-carrasquel-b5729844/</a> 
   - Email: carrasquelgamez.1726154@studenti.uniroma1.it
 - Razieh Akbari
   - Linkedin: 
-  - Email:
+  - Email: raziehakbari409@gmail.com
