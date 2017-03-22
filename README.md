@@ -12,12 +12,12 @@ for enriching the cultural experience in the Eternal City.</b>
     places in the nearby).
 
 <b>Responsibles of the project:</b>
-- Julio César Carrasquel
-  - Linkedin:  <a href="https://www.linkedin.com/in/julio-c%C3%A9sar-carrasquel-b5729844/">https://www.linkedin.com/in/julio-césar-carrasquel-b5729844/</a> 
-  - Email: carrasquelgamez.1726154@studenti.uniroma1.it
-- Razieh Akbari
-  - Linkedin: 
-  - Email: raziehakbari409@gmail.com
+- <b>Julio César Carrasquel</b>
+  - <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANyAAAAJGRlZTNlZDQwLTk4YTItNDA1MS04MzBjLWJmNGQ5M2RmZGUxYw.png" height="20" width="20"></img> <b>Linkedin</b>:  <a href="https://www.linkedin.com/in/julio-c%C3%A9sar-carrasquel-b5729844/">https://www.linkedin.com/in/julio-césar-carrasquel-b5729844/</a> 
+  - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"></img> <b>Email</b>: carrasquelgamez.1726154@studenti.uniroma1.it
+- <b>Razieh Akbari</b>
+  -  <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANyAAAAJGRlZTNlZDQwLTk4YTItNDA1MS04MzBjLWJmNGQ5M2RmZGUxYw.png" height="20" width="20"></img> <b>Linkedin</b>: 
+  - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"></img> <b>Email</b>: raziehakbari409@gmail.com
 
-<b>Updates</b>
+<b>Updates:</b>
   - Take a look at our project proposal on Slideshare! <a href="here">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>
