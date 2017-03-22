@@ -1,5 +1,3 @@
-<img src="https://cdn.shutterstock.com/shutterstock/videos/6123407/thumb/9.jpg" alt="https://cdn.shutterstock.com/shutterstock/videos/6123407/thumb/9.jpg" class="shrinkToFit" width="225" height="150">
-
 ## Welcome to our project page Smart Rome. (We are still building it!)
 <b>An interactive Android-based solution
 for enriching the cultural experience in the Eternal City.</b>
