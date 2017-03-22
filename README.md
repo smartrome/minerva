@@ -1,4 +1,4 @@
-## Welcome to our project page Smart Rome. (We are still building it)
+## Welcome to our project page Smart Rome. (We are still building it!)
 <b>An interactive Android-based solution
 for enriching the cultural experience in the Eternal City.</b>
 
@@ -20,4 +20,4 @@ for enriching the cultural experience in the Eternal City.</b>
   - Email: raziehakbari409@gmail.com
 
 <b>Updates</b>
-  - Take a look at our project proposal on Slideshare<a href="here">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>!
+  - Take a look at our project proposal on Slideshare! <a href="here">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>
