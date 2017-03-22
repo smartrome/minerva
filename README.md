@@ -18,3 +18,6 @@ for enriching the cultural experience in the Eternal City.</b>
 - Razieh Akbari
   - Linkedin: 
   - Email: raziehakbari409@gmail.com
+
+<b>Updates</b>
+  - Take a look at our project proposal on Slideshare<a href="here">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>!
