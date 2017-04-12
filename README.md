@@ -4,7 +4,7 @@ for enriching the cultural experience in the Eternal City.</b>
 
 <b>Our Objective:</b> Development of an Android application which takes the camera mirror image, and retrieves from the cloud interactive information about the place it's aiming.
 
-<b>Why Minerva?:</b> She was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
+<b>Why Minerva?:</b> Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
 
 <b>Responsibles of the project:</b>
 - <b>Julio César Carrasquel</b>
