@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;

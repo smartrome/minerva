@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.app.Activity;
 import android.content.Context;

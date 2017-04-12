@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.1"
 
     defaultConfig {
-        applicationId "com.google.sample.cloudvision"
+        applicationId "com.google.sample.com.minerva"
         minSdkVersion 17
         targetSdkVersion 25
         versionCode 1

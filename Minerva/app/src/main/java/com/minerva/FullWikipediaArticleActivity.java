@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;

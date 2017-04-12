@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 
 /**
@@ -7,8 +7,5 @@ package com.google.sample.cloudvision;
 public class Command {
 
 
-
-
-
-
+    
 }

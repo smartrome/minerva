@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context="com.google.sample.cloudvision.ResultActivity">
+    tools:context=".ResultActivity">
 
     <ScrollView
         android:layout_width="match_parent"

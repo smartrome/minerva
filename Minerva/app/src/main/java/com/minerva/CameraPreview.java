@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.content.Context;
 import android.hardware.Camera;

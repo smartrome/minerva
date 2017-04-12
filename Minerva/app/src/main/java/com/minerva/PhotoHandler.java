@@ -1,4 +1,4 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.content.Context;
 
@@ -6,17 +6,11 @@ import android.hardware.Camera;
 
 import android.os.Environment;
 
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by razi on 4/8/2017.

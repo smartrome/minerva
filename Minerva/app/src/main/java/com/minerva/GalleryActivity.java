@@ -1,26 +1,14 @@
-package com.google.sample.cloudvision;
+package com.minerva;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.hardware.Camera;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,19 +29,16 @@ import com.google.api.services.vision.v1.model.Image;
 import com.google.api.services.vision.v1.model.LocationInfo;
 
 import java.io.ByteArrayOutputStream;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by razi on 4/8/2017.
+ * Created by razi on 4/11/2017.
  */
-public class CameraActivity extends Activity {
+public class GalleryActivity extends AppCompatActivity {
 
     public static final String FILE_NAME = "temp.jpg";
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
-    private Camera mCamera;
-    private CameraPreview mPreview;
     public static final int GALLERY_IMAGE_REQUEST = 1;
     public static final int CAMERA_IMAGE_REQUEST = 3;
     private static final String CLOUD_VISION_API_KEY = "AIzaSyCZL62RLKn9_XB8EEgSURW0vy_APs4fsic";
@@ -61,109 +46,58 @@ public class CameraActivity extends Activity {
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final String TAG = Command.class.getSimpleName();
     public PhotoHandler.dataPass listener;
-    private  TextView mImageDetails;
+    private TextView mImageDetails;
     private ImageView mMainImage;
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
-
-
-
-        //handling bottom navigation bar
-        BottomNavigationView buttomNavigationVew = (BottomNavigationView) findViewById(R.id.navigation);
-        buttomNavigationVew.getMenu().getItem(0).setChecked(false);
-        buttomNavigationVew.getMenu().getItem(2).setChecked(true);
-
-        //handling item click in bottom navbar
-        buttomNavigationVew.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.action_camera:
-                        break;
-                    case R.id.action_gallery:
-                        mCamera.release();
-                        Intent galleryIntent = new Intent(CameraActivity.this , GalleryActivity.class);
-                        CameraActivity.this.startActivity(galleryIntent);
-                        break;
-                    case R.id.action_home:
-                        mCamera.release();
-                        Intent intent = new Intent(CameraActivity.this , MainActivity.class);
-                        CameraActivity.this.startActivity(intent);
-                        finish();
-                        break;
-                }
-
-                return false;
-            }
-        });
-
-
-
-        // Create an instance of Camera
-        mCamera = getCameraInstance();
-
-        // Create our Preview view and set it as the content of our activity.
-        mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-        preview.addView(mPreview);
-
-
-        //image button click
-
-        ImageButton button_capture = (ImageButton) findViewById(R.id.button_capture);
-        button_capture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener = new PhotoHandler.dataPass() {
-                    @Override
-                    public void onDataPass(byte[] data) {
-                        uploadImage(data);
-                    }
-                };
-
-                mCamera.takePicture(null, null, new PhotoHandler(getApplicationContext(),listener));
-
-            }
-        });
+        startGalleryChooser();
     }
 
-    /** A safe way to get an instance of the Camera object. */
-    public static Camera getCameraInstance() {
-        Camera c = null;
-        try {
-            c = Camera.open(); // attempt to get a Camera instance
-        } catch (Exception e) {
-            // Camera is not available (in use or does not exist)
+    //method for opening the gallery to choose picture
+    public void startGalleryChooser() {
+        if (PermissionUtils.requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select a photo"),
+                    GALLERY_IMAGE_REQUEST);
         }
-        return c; // returns null if camera is unavailable
     }
 
-    public  void uploadImage(byte[] data) {
-        if (data != null) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            uploadImage(data.getData());
+        }
+    }
+
+
+    public void uploadImage(Uri uri) {
+        if (uri != null) {
             try {
                 // scale the image to save on bandwidth
-                Bitmap bitmap  = BitmapFactory.decodeByteArray(data, 0, data.length);
-
-                bitmap =  scaleBitmapDown(bitmap,1200);
+                Bitmap bitmap =
+                        scaleBitmapDown(
+                                MediaStore.Images.Media.getBitmap(getContentResolver(), uri),
+                                1200);
 
                 callCloudVision(bitmap);
-                // mMainImage.setImageBitmap(bitmap);
 
-            } catch (Exception e) {
-                System.out.print(e);
+            } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         } else {
             Log.d(TAG, "Image picker gave us a null image.");
         }
     }
-
-// reduce the size of the image which we want to upload
+    // reduce the size of the image which we want to upload
     public Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
 
         int originalWidth = bitmap.getWidth();
@@ -184,7 +118,7 @@ public class CameraActivity extends Activity {
         return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false);
     }
 
-// calling to cloud vision API
+    // calling to cloud vision API
     public  void callCloudVision(final Bitmap bitmap) throws Exception {
         // Switch text to loading
         // mImageDetails.setText(R.string.loading_message);
@@ -275,6 +209,7 @@ public class CameraActivity extends Activity {
         }.execute();
     }
 
+    // converting the result of cloud vision API to string
     public void convertResponseToString(BatchAnnotateImagesResponse response) {
         String message = "I found these things:\n\n";
 
@@ -284,22 +219,29 @@ public class CameraActivity extends Activity {
 
         //need to check the availability of data, need to get coordinates
 
-        for (EntityAnnotation annotation : response.getResponses().get(0).getLandmarkAnnotations()) {
-            LocationInfo info = annotation.getLocations().listIterator().next();
-            placeName = annotation.getDescription();
-            latitude = info.getLatLng().getLatitude();
-            longitude = info.getLatLng().getLongitude();
-            //message = "Landmark: %s\n %s\n"+ annotation.getDescription()+ info.getLatLng();
-        }
+        EntityAnnotation annotation = response.getResponses().get(0).getLandmarkAnnotations().get(0);
+        //TODO Check the correct way to access the response information
 
-        Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
+        LocationInfo info = annotation.getLocations().listIterator().next();
+
+        placeName = annotation.getDescription();
+        latitude = info.getLatLng().getLatitude();
+        longitude = info.getLatLng().getLongitude();
+
+        //message = "Landmark: %s\n %s\n"+ annotation.getDescription()+ info.getLatLng();
+
+        Intent intent = new Intent(GalleryActivity.this, ResultActivity.class);
         intent.putExtra("PLACE_NAME", placeName);
         intent.putExtra("PLACE_LATITUDE", latitude);
         intent.putExtra("PLACE_LONGITUDE", longitude);
+        intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
+
         startActivity(intent);
         finish();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
