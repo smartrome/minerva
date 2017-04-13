@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginTop="5dp"
-    android:layout_gravity="center"
     android:padding="20dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:layout_margin="10dp"
             card_view:cardCornerRadius="14dp"
             card_view:cardElevation="10dp"
@@ -38,7 +31,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:src="@drawable/razi"
+                        android:src="@drawable/julio"
                         android:layout_marginRight="14dp"
                         android:layout_gravity="center"
                         android:layout_centerVertical="true"
@@ -51,13 +44,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="24dp"
                         android:layout_weight="1"
                         android:textSize="18dp"
-                        android:text="Julio Cesar"
+                        android:text="Julio César Carrasquel"
                         android:textColorHighlight="@color/colorPrimaryDark"
                         android:paddingTop="4dp"
-                        android:layout_margin="2dp"/>
+                        android:layout_marginLeft="12dp"
+                        />
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -74,7 +67,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:text="Razieh Akbari"
@@ -117,6 +110,7 @@
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_weight="1"
+                                    android:layout_gravity="center"
                                     />
                                 <TextView
                                     android:layout_width="match_parent"
@@ -126,7 +120,7 @@
                                     android:layout_centerVertical="true"
                                     android:textColorHighlight="@color/cardview_dark_background"
                                     android:paddingTop="14dp"
-                                    android:text="Field" />
+                                    android:text=" https://www.linkedin.com/in/julio-césar-carrasquel-b5729844/" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -144,6 +138,7 @@
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_weight="1"
+                                    android:layout_gravity="center"
                                     />
                                 <TextView
                                     android:layout_width="match_parent"
@@ -152,7 +147,7 @@
                                     android:textSize="12dp"
                                     android:textColorHighlight="@color/cardview_dark_background"
                                     android:paddingTop="14dp"
-                                    android:text="raziehakbari409" />
+                                    android:text="carrasquelgamez.1726154@studenti.uniroma1.it" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -170,6 +165,7 @@
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_weight="1"
+                                    android:layout_gravity="center"
                                     />
                                 <TextView
                                     android:layout_width="match_parent"
@@ -179,7 +175,7 @@
                                     android:layout_centerVertical="true"
                                     android:textColorHighlight="@color/cardview_dark_background"
                                     android:paddingTop="14dp"
-                                    android:text="Field" />
+                                    android:text="https://www.linkedin.com/in/razieh-akbari-2019b075/" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -197,6 +193,7 @@
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_weight="1"
+                                    android:layout_gravity="center"
                                     />
                                 <TextView
                                     android:layout_width="match_parent"
@@ -205,7 +202,7 @@
                                     android:textSize="12dp"
                                     android:textColorHighlight="@color/cardview_dark_background"
                                     android:paddingTop="14dp"
-                                    android:text="raziehakbari409" />
+                                    android:text="raziehakbari409@gmail.com" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -218,7 +215,6 @@
         </android.support.v7.widget.CardView>
 
 
-    </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
