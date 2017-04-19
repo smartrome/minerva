@@ -1,6 +1,7 @@
 package com.minerva;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,25 +41,22 @@ import java.io.ByteArrayOutputStream;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by razi on 4/8/2017.
  */
 public class CameraActivity extends Activity {
 
-    public static final String FILE_NAME = "temp.jpg";
-    private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private Camera mCamera;
     private CameraPreview mPreview;
-    public static final int GALLERY_IMAGE_REQUEST = 1;
-    public static final int CAMERA_IMAGE_REQUEST = 3;
+
     private static final String CLOUD_VISION_API_KEY = "AIzaSyCZL62RLKn9_XB8EEgSURW0vy_APs4fsic";
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final String TAG = Command.class.getSimpleName();
     public PhotoHandler.dataPass listener;
-    private  TextView mImageDetails;
-    private ImageView mMainImage;
+    public Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -142,7 +141,7 @@ public class CameraActivity extends Activity {
         if (data != null) {
             try {
                 // scale the image to save on bandwidth
-                Bitmap bitmap  = BitmapFactory.decodeByteArray(data, 0, data.length);
+                bitmap  = BitmapFactory.decodeByteArray(data, 0, data.length);
 
                 bitmap =  scaleBitmapDown(bitmap,1200);
 
@@ -271,28 +270,86 @@ public class CameraActivity extends Activity {
     }
 
     public void convertResponseToString(BatchAnnotateImagesResponse response) {
-        String message = "I found these things:\n\n";
 
-        String placeName = null;
-        Double latitude = null;
-        Double longitude = null;
+        List<String> placeName = new ArrayList<String>();
+        List<Double> latitude = new ArrayList<Double>();
+        List<Double> longitude = new ArrayList<Double>();
 
         //need to check the availability of data, need to get coordinates
+        if(response.getResponses().get(0).getLandmarkAnnotations()!= null)
+        {
+            for (EntityAnnotation annotation : response.getResponses().get(0).getLandmarkAnnotations()) {
+                LocationInfo info = annotation.getLocations().listIterator().next();
 
-        for (EntityAnnotation annotation : response.getResponses().get(0).getLandmarkAnnotations()) {
-            LocationInfo info = annotation.getLocations().listIterator().next();
-            placeName = annotation.getDescription();
-            latitude = info.getLatLng().getLatitude();
-            longitude = info.getLatLng().getLongitude();
-            //message = "Landmark: %s\n %s\n"+ annotation.getDescription()+ info.getLatLng();
+                if(info !=null && !(annotation.getDescription().isEmpty()))
+                {
+                    placeName.add(annotation.getDescription());
+                    latitude.add(info.getLatLng().getLatitude());
+                    longitude.add(info.getLatLng().getLongitude());
+                }
+
+                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+                    Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
+                    intent.putExtra("PLACE_NAME", placeName.get(0));
+                    intent.putExtra("PLACE_LATITUDE", latitude.get(0));
+                    intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
+                    intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
+                    // intent.putExtra("image", bitmap);
+                    finish();
+                    CameraActivity.this.startActivity(intent);
+
+                }
+                else
+                {
+                    CameraActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
+                            alertDialog.setTitle("Alert");
+                            alertDialog.setMessage("Please Try Again");
+                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            Intent intent = new Intent(CameraActivity.this , MainActivity.class);
+                                            finish();
+                                            startActivity(intent);
+                                        }
+                                    });
+                            alertDialog.show();
+
+                        }
+                    });
+
+                }
+
+            }
         }
 
-        Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
-        intent.putExtra("PLACE_NAME", placeName);
-        intent.putExtra("PLACE_LATITUDE", latitude);
-        intent.putExtra("PLACE_LONGITUDE", longitude);
-        startActivity(intent);
-        finish();
+        else{
+            CameraActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("Please Try Again");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(CameraActivity.this , MainActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            });
+                    alertDialog.show();
+                }
+            });
+
+        }
+
+
     }
 
 

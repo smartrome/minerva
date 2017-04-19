@@ -1,15 +1,22 @@
 package com.minerva;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -31,28 +38,33 @@ import com.google.api.services.vision.v1.model.LocationInfo;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by razi on 4/11/2017.
  */
 public class GalleryActivity extends AppCompatActivity {
 
-    public static final String FILE_NAME = "temp.jpg";
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     public static final int GALLERY_IMAGE_REQUEST = 1;
-    public static final int CAMERA_IMAGE_REQUEST = 3;
     private static final String CLOUD_VISION_API_KEY = "AIzaSyCZL62RLKn9_XB8EEgSURW0vy_APs4fsic";
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final String TAG = Command.class.getSimpleName();
-    public PhotoHandler.dataPass listener;
-    private TextView mImageDetails;
-    private ImageView mMainImage;
+    public Bitmap bitmap;
 
+    private static final int PROGRESS = 0x1;
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+    private Handler mHandler = new Handler();
+
+    private static GalleryActivity parent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gallery);
+        mProgress = (ProgressBar) findViewById(R.id.progressBar);
         startGalleryChooser();
     }
 
@@ -81,7 +93,7 @@ public class GalleryActivity extends AppCompatActivity {
         if (uri != null) {
             try {
                 // scale the image to save on bandwidth
-                Bitmap bitmap =
+                 bitmap =
                         scaleBitmapDown(
                                 MediaStore.Images.Media.getBitmap(getContentResolver(), uri),
                                 1200);
@@ -211,34 +223,92 @@ public class GalleryActivity extends AppCompatActivity {
 
     // converting the result of cloud vision API to string
     public void convertResponseToString(BatchAnnotateImagesResponse response) {
-        String message = "I found these things:\n\n";
 
-        String placeName = null;
-        Double latitude = null;
-        Double longitude = null;
+        List<String> placeName = new ArrayList<String>();
+        List<Double> latitude = new ArrayList<Double>();
+        List<Double> longitude = new ArrayList<Double>();
 
         //need to check the availability of data, need to get coordinates
+        if(response.getResponses().get(0).getLandmarkAnnotations()!= null)
+        {
+            for (EntityAnnotation annotation : response.getResponses().get(0).getLandmarkAnnotations()) {
+                LocationInfo info = annotation.getLocations().listIterator().next();
 
-        EntityAnnotation annotation = response.getResponses().get(0).getLandmarkAnnotations().get(0);
-        //TODO Check the correct way to access the response information
+                if(info !=null && !(annotation.getDescription().isEmpty()))
+                {
+                    placeName.add(annotation.getDescription());
+                    latitude.add(info.getLatLng().getLatitude());
+                    longitude.add(info.getLatLng().getLongitude());
+                }
 
-        LocationInfo info = annotation.getLocations().listIterator().next();
+                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+                    Intent intent = new Intent(GalleryActivity.this, ResultActivity.class);
+                    intent.putExtra("PLACE_NAME", placeName.get(0));
+                    intent.putExtra("PLACE_LATITUDE", latitude.get(0));
+                    intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
+                    intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
+                   // intent.putExtra("image", bitmap);
+                    finish();
+                    GalleryActivity.this.startActivity(intent);
 
-        placeName = annotation.getDescription();
-        latitude = info.getLatLng().getLatitude();
-        longitude = info.getLatLng().getLongitude();
+                }
+                else
+                {
+                    GalleryActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
 
-        //message = "Landmark: %s\n %s\n"+ annotation.getDescription()+ info.getLatLng();
+                            AlertDialog alertDialog = new AlertDialog.Builder(GalleryActivity.this).create();
+                            alertDialog.setTitle("Alert");
+                            alertDialog.setMessage("Please Try Again");
+                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            Intent intent = new Intent(GalleryActivity.this , MainActivity.class);
+                                            finish();
+                                            startActivity(intent);
+                                        }
+                                    });
+                            alertDialog.show();
 
-        Intent intent = new Intent(GalleryActivity.this, ResultActivity.class);
-        intent.putExtra("PLACE_NAME", placeName);
-        intent.putExtra("PLACE_LATITUDE", latitude);
-        intent.putExtra("PLACE_LONGITUDE", longitude);
-        intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
+                        }
+                    });
 
-        startActivity(intent);
-        finish();
-    }
+                }
+
+            }
+        }
+
+        else{
+            GalleryActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog alertDialog = new AlertDialog.Builder(GalleryActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("Please Try Again");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(GalleryActivity.this , MainActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            });
+                    alertDialog.show();
+                }
+            });
+
+        }
+
+
+            }
+
+
+
+
+
 
     @Override
     public void onBackPressed() {
