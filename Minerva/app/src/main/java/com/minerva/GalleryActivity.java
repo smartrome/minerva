@@ -246,8 +246,13 @@ public class GalleryActivity extends AppCompatActivity {
                     intent.putExtra("PLACE_NAME", placeName.get(0));
                     intent.putExtra("PLACE_LATITUDE", latitude.get(0));
                     intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
-                    intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
-                   // intent.putExtra("image", bitmap);
+
+                    //converting bitmap to byte stream
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+
+                    intent.putExtra("USER_IMAGE", byteArray); //TODO Pass image as a byte array
                     finish();
                     GalleryActivity.this.startActivity(intent);
 

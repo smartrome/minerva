@@ -57,6 +57,7 @@ public class CameraActivity extends Activity {
     private static final String TAG = Command.class.getSimpleName();
     public PhotoHandler.dataPass listener;
     public Bitmap bitmap;
+    public AlertDialog cameraLoadDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,6 +121,17 @@ public class CameraActivity extends Activity {
                     }
                 };
 
+                CameraActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        cameraLoadDialog = new AlertDialog.Builder(CameraActivity.this).create();
+                        cameraLoadDialog.setTitle("Loading");
+                        cameraLoadDialog.setMessage("Please Wait");
+                        cameraLoadDialog.show();
+                        cameraLoadDialog.setCancelable(false);
+                        cameraLoadDialog.setCanceledOnTouchOutside(false);
+                    }
+                });
                 mCamera.takePicture(null, null, new PhotoHandler(getApplicationContext(),listener));
 
             }
@@ -271,6 +283,7 @@ public class CameraActivity extends Activity {
 
     public void convertResponseToString(BatchAnnotateImagesResponse response) {
 
+        cameraLoadDialog.dismiss();
         List<String> placeName = new ArrayList<String>();
         List<Double> latitude = new ArrayList<Double>();
         List<Double> longitude = new ArrayList<Double>();
@@ -293,8 +306,13 @@ public class CameraActivity extends Activity {
                     intent.putExtra("PLACE_NAME", placeName.get(0));
                     intent.putExtra("PLACE_LATITUDE", latitude.get(0));
                     intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
-                    intent.putExtra("USER_IMAGE", 0); //TODO Pass image as a byte array
-                    // intent.putExtra("image", bitmap);
+
+                    //converting bitmap to byte stream
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+
+                    intent.putExtra("USER_IMAGE", byteArray);
                     finish();
                     CameraActivity.this.startActivity(intent);
 
