@@ -1,6 +1,7 @@
 package com.minerva;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -17,11 +18,19 @@ import java.util.Scanner;
 
 public abstract class WikipediaServiceHandler{
 
-    private String serviceURL;
+    /*** Logging tag ***/
 
-    private String articleName;
+    protected String LOG_TAG;
+
+    /*** Wikipedia service hander input parameters ***/
+
+    protected String serviceURL;
+
+    protected String articleName;
 
     public WikipediaServiceHandler(String articleName){
+
+        this.LOG_TAG = "WikipediaServiceHandler";
 
         this.articleName = articleName;
 
@@ -30,7 +39,16 @@ public abstract class WikipediaServiceHandler{
 
     public void callService(){
 
+        // *** Change spaces by the special character %20 in the landmark name ***
+        articleName = articleName.replace(" ", "%20");
+
         String url = serviceURL + articleName;
+
+        // *** Adding redirect let Wikipedia know to redirect us to the article with more similarity on the name ***
+        //TODO Do more tests using the attribute on the Wikipedia API call request
+        url = url + "&redirects=1";
+
+        Log.i(LOG_TAG, "Wikipedia service handler calling service in: " + url);
 
         new AsyncTask<String, Integer, String>() {
 
@@ -51,8 +69,10 @@ public abstract class WikipediaServiceHandler{
                     inputStream = new BufferedInputStream(httpUrlConnection.getInputStream());
                     responseCode = httpUrlConnection.getResponseCode();
                 }catch(Exception e){
-                    e.printStackTrace();
+                    Log.e(LOG_TAG, "There has been an error communicating with the Wikipedia API", e);
                 }
+
+                Log.i(LOG_TAG, "Wikipedia Service Handler Response code status: " + responseCode);
                 return responseCode >= 200 && responseCode < 300 ? convertStreamToString(inputStream) : null;
             }
 
@@ -66,7 +86,7 @@ public abstract class WikipediaServiceHandler{
                 if (responseCode >= 200 && responseCode < 300) {
                     succeeded(result);
                 } else {
-                    /*** Manage failure cases ***/
+                    //TODO Manage failure cases
                 }
 
             }
@@ -75,31 +95,43 @@ public abstract class WikipediaServiceHandler{
     }
 
     protected void succeeded(String result){
+        // Only print the raw JSON object for debugging on development
+        Log.d(LOG_TAG, "JSON Object arrived from the Wikipedia server: " + result);
         onMessageReceived(parseWikipediaMessage(result));
     }
-
-    public abstract void onMessageReceived(String wikipediaMessage);
 
     protected String parseWikipediaMessage(String wikipediaMessage){
 
         String extract = null;
 
         try {
+            Log.i(LOG_TAG, "Parsing Wikipedia message response...");
+
             JSONObject wikipediaMessageAsJson = new JSONObject(wikipediaMessage);
 
             JSONObject pages = wikipediaMessageAsJson.getJSONObject("query").getJSONObject("pages");
 
             extract = pages.getJSONObject(((Iterator<String>) pages.keys()).next()).getString("extract");
 
-            String firstParagraph = new String(extract.substring(0, extract.indexOf("\n")));
-
-            extract = firstParagraph;
+            if(extract != null && extract.length() > 0){
+                // Check if the extract field is not empty and not null
+                String firstParagraph = new String(extract.substring(0, extract.indexOf("\n")));
+                extract = firstParagraph;
+            }else{
+                Log.w(LOG_TAG, "Extract field on JSON response message is empty or null. Please check...");
+                // If the extract field was empty or null, put again null as a sentinel mark
+                extract = null;
+            }
 
         }catch(Exception e){
-            e.printStackTrace();
+            Log.e(LOG_TAG, "There has been an error parsing the Wikipedia extract...", e);
+            extract = null;
         }
 
         return extract;
     }
 
+    /*** This method is implemented within the Result Activity in order to carry out the
+     * necessary logic after the call done to the wikipedia API ***/
+    public abstract void onMessageReceived(String wikipediaMessage);
 }

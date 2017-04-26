@@ -60,6 +60,8 @@ public class GalleryActivity extends AppCompatActivity {
 
     private static GalleryActivity parent;
 
+    protected Uri imageUri; // *** Preserve image URI to pass it later to the Result activity ***
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,11 +94,11 @@ public class GalleryActivity extends AppCompatActivity {
     public void uploadImage(Uri uri) {
         if (uri != null) {
             try {
-                // scale the image to save on bandwidth
-                 bitmap =
-                        scaleBitmapDown(
-                                MediaStore.Images.Media.getBitmap(getContentResolver(), uri),
-                                1200);
+                // *** Scale the image to save on bandwidth ***
+                bitmap = scaleBitmapDown(MediaStore.Images.Media.getBitmap(getContentResolver(), uri), 1200);
+
+                // *** Preserve image URI in order to be called by the result activity ***
+                imageUri = uri;
 
                 callCloudVision(bitmap);
 
@@ -242,23 +244,26 @@ public class GalleryActivity extends AppCompatActivity {
                 }
 
                 if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+
+                    //FIXME Watch out, we are getting inside this 'if' statement more than just one time
+
+                    // *** Creating intent passing landmark information to the result activity ***
+                    Log.i(TAG, "Creating intent and passing it to the Result Activity...");
                     Intent intent = new Intent(GalleryActivity.this, ResultActivity.class);
                     intent.putExtra("PLACE_NAME", placeName.get(0));
                     intent.putExtra("PLACE_LATITUDE", latitude.get(0));
                     intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
 
-                    //converting bitmap to byte stream
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
+                    // *** Passing URI location of the image within the phone storage ***
+                    String userImageURI = imageUri.toString();
+                    Log.d(TAG, "Passing to the Result Activity the image URI: " + userImageURI);
+                    intent.putExtra("USER_IMAGE_URI", userImageURI);
 
-                    intent.putExtra("USER_IMAGE", byteArray); //TODO Pass image as a byte array
+                    // Finishing the Gallery Activity and starting the Result Activity
                     finish();
                     GalleryActivity.this.startActivity(intent);
 
-                }
-                else
-                {
+                }else{
                     GalleryActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

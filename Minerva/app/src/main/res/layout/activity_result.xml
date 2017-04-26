@@ -47,7 +47,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="85dp"
                 android:weightSum="9"
                 android:orientation="horizontal">
                 <Button
@@ -55,8 +55,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_menu_play_clip"
-                    android:drawablePadding="50dp"
+                    android:drawableTop="@drawable/ic_action_audio_guide"
+                    android:drawablePadding="10dp"
                     android:text="@string/button_audioguide"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"/>
@@ -66,7 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_dialog_info"
+                    android:drawableTop="@drawable/ic_action_basic_info"
                     android:drawablePadding="10dp"
                     android:text="@string/button_seeinfo"
                     android:textColor="@color/colorPrimary"
@@ -76,7 +76,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_dialog_map"
+                    android:drawableTop="@drawable/ic_action_see_maps"
                     android:drawablePadding="10dp"
                     android:text="@string/button_maps"
                     android:textColor="@color/colorPrimary"

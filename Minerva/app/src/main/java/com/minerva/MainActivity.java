@@ -16,8 +16,6 @@
 
 package com.minerva;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,53 +23,61 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*** Logging tag ***/
+
+    protected String LOG_TAG;
+
+    /*** General activity attributes ***/
 
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
-    private static final int GALLERY_IMAGE_REQUEST = 1;
-    public static final int CAMERA_PERMISSIONS_REQUEST = 2;
-    public static final int CAMERA_IMAGE_REQUEST = 3;
 
+    private static final int GALLERY_IMAGE_REQUEST = 1;
+
+    public static final int CAMERA_PERMISSIONS_REQUEST = 2;
+
+    public static final int CAMERA_IMAGE_REQUEST = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //setting up the Toolbar
+        LOG_TAG = MainActivity.this.getClass().getSimpleName();
+
+        Log.i(LOG_TAG, "Creating application Main Activity...");
+
+        // *** Setting up the Toolbar ***
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        //handling navigation buttons and clicks
-
-        BottomNavigationView buttomNavigationVew = (BottomNavigationView) findViewById(R.id.navigation);
-        buttomNavigationVew.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        // *** Handling navigation buttons and clicks ***
+        BottomNavigationView bottomNavigationVew = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationVew.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.action_camera:
-                        Intent cameraintent = new Intent(MainActivity.this, CameraActivity.class);
-                        startActivity(cameraintent);
+                        Log.i(LOG_TAG, "Accessing Camera Activity...");
+                        Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                        startActivity(cameraIntent);
                         finish();
                         break;
                     case R.id.action_gallery:
+                        Log.i(LOG_TAG, "Accessing Gallery Activity...");
                         Intent galleryIntent = new Intent(MainActivity.this, GalleryActivity.class);
                         startActivity(galleryIntent);
                         break;
                     case R.id.action_home:
                         break;
-
                 }
 
                 return false;
@@ -79,31 +85,30 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // *** Inflate the menu; this adds items to the action bar if it is present. ***
         getMenuInflater().inflate(R.menu.toolbar_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        /*** Handle action bar item clicks here. The action bar will
+            automatically handle clicks on the Home/Up button, so long
+            as you specify a parent activity in AndroidManifest.xml. ***/
+
         int id = item.getItemId();
+
         if (id == R.id.action_settings) {
-
             return true;
-        }
-        if (id == R.id.setting) {
-
-            Toast.makeText(getApplicationContext(),"Settings Clicked",Toast.LENGTH_LONG).show();
+        }else if (id == R.id.settings) {
+            // *** Launch Settings Activity ***
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
-        }
-        if (id == R.id.aboutUs) {
-
+        }else if (id == R.id.aboutUs) {
+            // *** Display AboutUs Section ***
             aboutUs();
             return true;
         }
@@ -112,13 +117,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void aboutUs() {
+        Log.i(LOG_TAG, "Displaying AboutUs information...");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View viewRoot = inflater.inflate(R.layout.about_us, null);
 
-        builder.setTitle("About US");
+        builder.setTitle("About Us");
         builder.setView(viewRoot);
         AlertDialog dialog = builder.create();
         dialog.show();

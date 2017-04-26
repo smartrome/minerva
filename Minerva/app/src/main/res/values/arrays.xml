@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- *** List of available languages on the application *** -->
+    <string-array name="language">
+        <item>English</item>
+    </string-array>
+
+    <!-- *** List of language alias codes *** -->
+    <string-array name="languageAlias">
+        <item>en</item>
+    </string-array>
+
+</resources>

@@ -3,9 +3,11 @@ package com.minerva;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FullWikipediaArticleActivity extends AppCompatActivity {
@@ -20,9 +22,11 @@ public class FullWikipediaArticleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_wikipedia_article);
 
-        /*** Change color of the Action Bar ***/
+        /*** Change background color and text color of the Action Bar ***/
+
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.rome)));
+        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Minerva</font>"));
 
         // Getting string from previous interface, and build article URL on Wikipedia
         String articleName = getIntent().getStringExtra("PLACE_NAME");

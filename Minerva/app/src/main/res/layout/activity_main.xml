@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -20,7 +19,6 @@
             android:background="@color/rome"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             />
-
     </android.support.design.widget.AppBarLayout>
 
     <pl.droidsonroids.gif.GifImageView
@@ -28,9 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/large"/>
-
-
-
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -308,11 +308,11 @@ public class CameraActivity extends Activity {
                     intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
 
                     //converting bitmap to byte stream
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byte[] byteArray = stream.toByteArray();
 
-                    intent.putExtra("USER_IMAGE", byteArray);
+                    intent.putExtra("USER_IMAGE", byteArray);*/
                     finish();
                     CameraActivity.this.startActivity(intent);
 
