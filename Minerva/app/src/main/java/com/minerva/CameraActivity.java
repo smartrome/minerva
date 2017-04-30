@@ -315,6 +315,7 @@ public class CameraActivity extends Activity {
                     intent.putExtra("USER_IMAGE", byteArray);*/
                     finish();
                     CameraActivity.this.startActivity(intent);
+                    break;
 
                 }
                 else

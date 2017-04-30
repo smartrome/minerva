@@ -21,31 +21,38 @@
             />
     </android.support.design.widget.AppBarLayout>
 
-    <pl.droidsonroids.gif.GifImageView
+    <!-- <pl.droidsonroids.gif.GifImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:src="@drawable/large"/>-->
+
+     <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom"
+         android:background="@color/colorPrimary"
+         >
+
+         <android.support.design.widget.BottomNavigationView
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:id="@+id/navigation"
+             android:layout_width="match_parent"
+             android:layout_height="56dp"
+             app:elevation="16dp"
+             app:menu="@menu/my_navigation_items"
+             android:background="@color/rome"
+
+             />
+
+     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/large"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        >
-
-        <android.support.design.widget.BottomNavigationView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/navigation"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            app:elevation="16dp"
-            app:menu="@menu/my_navigation_items"
-            android:background="@color/rome"
-
-            />
-
-    </FrameLayout>
+        app:srcCompat="@drawable/logominerva" />
 
 </android.support.design.widget.CoordinatorLayout>

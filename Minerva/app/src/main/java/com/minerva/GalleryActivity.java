@@ -262,6 +262,7 @@ public class GalleryActivity extends AppCompatActivity {
                     // Finishing the Gallery Activity and starting the Result Activity
                     finish();
                     GalleryActivity.this.startActivity(intent);
+                    break;
 
                 }else{
                     GalleryActivity.this.runOnUiThread(new Runnable() {

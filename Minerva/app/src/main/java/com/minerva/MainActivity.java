@@ -16,7 +16,10 @@
 
 package com.minerva;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -28,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,13 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     /*** General activity attributes ***/
 
-    private static final int GALLERY_PERMISSIONS_REQUEST = 0;
 
-    private static final int GALLERY_IMAGE_REQUEST = 1;
+    public final String PREFS_NAME1 = "MyPrefsFile1";
 
-    public static final int CAMERA_PERMISSIONS_REQUEST = 2;
-
-    public static final int CAMERA_IMAGE_REQUEST = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,30 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
+
+
+        //handling first time use
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME1, 0);
+
+        //if (settings.getBoolean("my_first_time1", false)) {
+            //the app is being launched for first time, do something
+
+            // first time task
+        Dialog alertDialog = new Dialog(this);
+        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        alertDialog.setContentView(R.layout.navigation);
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        alertDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+        alertDialog.show();
+
+
+
+            // record the fact that the app has been started at least once
+          //  settings.edit().putBoolean("my_first_time", false).commit();
+        }
+   // }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void aboutUs() {
-        Log.i(LOG_TAG, "Displaying AboutUs information...");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
