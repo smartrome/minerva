@@ -16,5 +16,6 @@ for enriching the cultural experience in the Eternal City.</b>
 
 <ahref>
 <b>Updates:</b>
-  - Take a look at our project step by step presentations on Slideshare! <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal</a>
-  <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">https://www.slideshare.net/RaziehAkbari/minerva-second-presentation</a>
+  - Take a look at our project step by step presentations on Slideshare! <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">First Presentation</a>
+  <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">Second Presentation</a>
+ <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233">Third Presentation</a>
