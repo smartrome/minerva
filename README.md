@@ -15,7 +15,7 @@ for enriching the cultural experience in the Eternal City.</b>
   - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"> <b>Email</b>: raziehakbari409@gmail.com
   
 <b>Updates:</b>
-<b><p>Take a look at our project step by step presentations on Slideshare!</p></b>
+<p><b>Take a look at our project step by step presentations on Slideshare!</b></p>
   <p>- <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">First Presentation</a> - Team presentation and project proposal.</p>
   <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">Second Presentation</a> - User Experience and System Design.</p>
   <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233">Third Presentation</a> - Introductory slides used for the presentation of our MVP.</p>
