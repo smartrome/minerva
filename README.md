@@ -13,10 +13,9 @@ for enriching the cultural experience in the Eternal City.</b>
 - <b>Razieh Akbari</b>
   -  <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANyAAAAJGRlZTNlZDQwLTk4YTItNDA1MS04MzBjLWJmNGQ5M2RmZGUxYw.png" height="20" width="20"> <b>Linkedin</b>:  <a href="https://www.linkedin.com/in/razieh-akbari-2019b075/"> https://www.linkedin.com/in/razieh-akbari-2019b075/</a>
   - <img id="imageLogo" class="logo-image" src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" alt="iconmonstr email 4 icon" style="border-width:0px;" height="20" width="20"> <b>Email</b>: raziehakbari409@gmail.com
-
-<ahref>
-<b>Updates:</b>
-  - Take a look at our project step by step presentations on Slideshare!<br>
-  <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">First Presentation</a><br>
-  <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">Second Presentation</a><br>
- <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233">Third Presentation</a>
+  
+<b>Updates:</b> <p>
+<b><p>Take a look at our project step by step presentations on Slideshare!</p></b>
+  <p>- <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal">First Presentation</a> - Team presentation and project proposal.</p>
+  <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">Second Presentation</a> - User Experience and System Design.</p>
+  <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233">Third Presentation</a> - Introductory slides used for the presentation of our MVP.</p>
