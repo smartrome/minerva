@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -81,12 +82,15 @@ public class CameraActivity extends Activity {
                     case R.id.action_camera:
                         break;
                     case R.id.action_gallery:
+
                         mCamera.release();
+                        finish();
                         Intent galleryIntent = new Intent(CameraActivity.this , GalleryActivity.class);
                         CameraActivity.this.startActivity(galleryIntent);
                         break;
                     case R.id.action_home:
                         mCamera.release();
+                        finish();
                         Intent intent = new Intent(CameraActivity.this , MainActivity.class);
                         CameraActivity.this.startActivity(intent);
                         finish();
@@ -372,5 +376,14 @@ public class CameraActivity extends Activity {
     }
 
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            mCamera.release();
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

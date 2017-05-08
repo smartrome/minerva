@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -87,6 +88,9 @@ public class GalleryActivity extends AppCompatActivity {
 
         if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             uploadImage(data.getData());
+        }else
+        {
+            this.finish();
         }
     }
 
@@ -317,12 +321,4 @@ public class GalleryActivity extends AppCompatActivity {
             }
 
 
-
-
-
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
 }

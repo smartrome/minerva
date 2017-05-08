@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(LOG_TAG, "Accessing Camera Activity...");
                         Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
                         startActivity(cameraIntent);
-                        finish();
                         break;
                     case R.id.action_gallery:
                         Log.i(LOG_TAG, "Accessing Gallery Activity...");
