@@ -48,6 +48,8 @@ public class ResultActivity extends AppCompatActivity {
 
     protected Button readMoreButton;
 
+    protected ImageView saveImageButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -88,6 +90,19 @@ public class ResultActivity extends AppCompatActivity {
             }else{
                 Log.w(LOG_TAG, "Image URI came null from the caller activity. Please check...");
             }
+
+            // *** Provide Save Image functionality only if we come from the Camera Activity ***
+            saveImageButton = (ImageView) findViewById(R.id.savePictureButton);
+            Boolean fromCamera = intent.getBooleanExtra("FROM_CAMERA", false);
+            if(fromCamera){
+                // *** Allow save function of image ***
+
+
+            }else{
+                // *** Hide save image button ***
+                saveImageButton.setVisibility(View.INVISIBLE);
+            }
+
 
             wikipediaInformationTextView = (TextView) findViewById(R.id.wikipediaInformationTextView);
             callWikipediaService();

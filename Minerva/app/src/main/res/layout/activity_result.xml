@@ -28,12 +28,26 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/placeUserImageView"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
-                android:padding="5dp"
-                android:src="@drawable/test_image" />
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/placeUserImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/test_image" />
+
+                <ImageView
+                    android:id="@+id/savePictureButton"
+                    android:layout_width="50dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|right"
+                    android:src="@drawable/ic_action_audio_guide" />
+
+            </FrameLayout>
+
 
             <TextView
                 android:id="@+id/placeNameTextView"
