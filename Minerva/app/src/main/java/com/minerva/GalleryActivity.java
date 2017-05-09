@@ -94,7 +94,6 @@ public class GalleryActivity extends AppCompatActivity {
         }
     }
 
-
     public void uploadImage(Uri uri) {
         if (uri != null) {
             try {
@@ -263,6 +262,9 @@ public class GalleryActivity extends AppCompatActivity {
                     Log.d(TAG, "Passing to the Result Activity the image URI: " + userImageURI);
                     intent.putExtra("USER_IMAGE_URI", userImageURI);
 
+                    // *** It will indicate to the Result Activity if we come or not from the Camera Activity ***
+                    intent.putExtra("FROM_CAMERA", false);
+
                     // Finishing the Gallery Activity and starting the Result Activity
                     finish();
                     GalleryActivity.this.startActivity(intent);
@@ -289,9 +291,7 @@ public class GalleryActivity extends AppCompatActivity {
 
                         }
                     });
-
                 }
-
             }
         }
 

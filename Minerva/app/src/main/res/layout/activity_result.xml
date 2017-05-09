@@ -37,6 +37,7 @@
                     android:id="@+id/placeUserImageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/test_image" />
 
                 <ImageView
@@ -44,7 +45,7 @@
                     android:layout_width="50dp"
                     android:layout_height="48dp"
                     android:layout_gravity="bottom|right"
-                    android:src="@drawable/ic_action_audio_guide" />
+                    android:src="@drawable/ic_action_save" />
 
             </FrameLayout>
 

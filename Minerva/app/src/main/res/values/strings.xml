@@ -18,6 +18,9 @@
     <string name="button_maps">Maps</string>
     <string name="title_activity_full_article">FullArticleActivity</string>
     <string name="error_retrieving_wikipedia_extract">Oops!&#8230; We could not get more information for this place.</string>
+    <string name="message_save_image_indication">Press on the image arrow if you want to save your picture!</string>
+    <string name="message_landmark_welcome_camera">You are just in front of %s! Enjoy it</string>
+    <string name="message_landmark_welcome_gallery">You has been in front of %s! Amazing!</string>
 
     <!-- Strings related to the Settings Activity -->
     <string name="title_activity_settings">Settings</string>

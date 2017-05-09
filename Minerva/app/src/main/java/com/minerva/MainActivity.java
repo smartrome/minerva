@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
@@ -42,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*** General activity attributes ***/
 
-
     public final String PREFS_NAME1 = "MyPrefsFile1";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,16 +82,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        //handling first time use
+        // *** Handling first time use ***
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME1, 0);
 
         //if (settings.getBoolean("my_first_time1", false)) {
             //the app is being launched for first time, do something
 
-            // first time task
-        Dialog alertDialog = new Dialog(this);
+        // *** First time task ***
+        final Dialog alertDialog = new Dialog(this);
         alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alertDialog.setContentView(R.layout.navigation);
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -100,12 +98,17 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialog.show();
 
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               alertDialog.cancel();
+            }
+        }, 3000);
 
-
-            // record the fact that the app has been started at least once
-          //  settings.edit().putBoolean("my_first_time", false).commit();
-        }
-   // }
+        // record the fact that the app has been started at least once
+        //  settings.edit().putBoolean("my_first_time", false).commit();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void aboutUs() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = LayoutInflater.from(this);

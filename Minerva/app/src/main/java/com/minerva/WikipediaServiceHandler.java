@@ -114,9 +114,9 @@ public abstract class WikipediaServiceHandler{
             extract = pages.getJSONObject(((Iterator<String>) pages.keys()).next()).getString("extract");
 
             if(extract != null && extract.length() > 0){
-                // Check if the extract field is not empty and not null
-                String firstParagraph = new String(extract.substring(0, extract.indexOf("\n")));
-                extract = firstParagraph;
+                /***Check if the extract field is not empty and not null, then we take the first paragraph
+                    unless the extract is only composed of one paragraph ***/
+                extract = extract.indexOf("\n") == - 1 ? extract : new String(extract.substring(0, extract.indexOf("\n")));
             }else{
                 Log.w(LOG_TAG, "Extract field on JSON response message is empty or null. Please check...");
                 // If the extract field was empty or null, put again null as a sentinel mark

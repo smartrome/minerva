@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -40,7 +41,10 @@ import com.google.api.services.vision.v1.model.LocationInfo;
 
 import java.io.ByteArrayOutputStream;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,40 +53,56 @@ import java.util.List;
  */
 public class CameraActivity extends Activity {
 
+    /*** Logging tag ***/
+
+    private static String LOG_TAG;
+
+    /*** Camera related attributes ***/
+
     private Camera mCamera;
+
     private CameraPreview mPreview;
 
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyCZL62RLKn9_XB8EEgSURW0vy_APs4fsic";
-    private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
-    private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-    private static final String TAG = Command.class.getSimpleName();
-    public PhotoHandler.dataPass listener;
-    public Bitmap bitmap;
     public AlertDialog cameraLoadDialog;
+
+    /*** Other class attributes ***/
+
+    public PhotoHandler.dataPass listener;
+
+    public Bitmap bitmap;
+
+    public Bitmap scaledDownBitmap;
+
+    /*** Constants used by the Google Cloud Vision API ***/
+
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyCZL62RLKn9_XB8EEgSURW0vy_APs4fsic";
+
+    private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
+
+    private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        LOG_TAG = CameraActivity.this.getClass().getSimpleName();
 
+        Log.i(LOG_TAG, "Accessing to Camera Activity functionality...");
 
-        //handling bottom navigation bar
+        // Handling bottom navigation bar
         BottomNavigationView buttomNavigationVew = (BottomNavigationView) findViewById(R.id.navigation);
         buttomNavigationVew.getMenu().getItem(0).setChecked(false);
         buttomNavigationVew.getMenu().getItem(2).setChecked(true);
 
-        //handling item click in bottom navbar
+        // Handling item click in bottom navigation bar
         buttomNavigationVew.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.action_camera:
                         break;
                     case R.id.action_gallery:
-
                         mCamera.release();
                         finish();
                         Intent galleryIntent = new Intent(CameraActivity.this , GalleryActivity.class);
@@ -101,8 +121,6 @@ public class CameraActivity extends Activity {
             }
         });
 
-
-
         // Create an instance of Camera
         mCamera = getCameraInstance();
 
@@ -111,11 +129,9 @@ public class CameraActivity extends Activity {
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
 
-
-        //image button click
-
-        ImageButton button_capture = (ImageButton) findViewById(R.id.button_capture);
-        button_capture.setOnClickListener(new View.OnClickListener() {
+        // Image button click handling
+        ImageButton buttonCapture = (ImageButton) findViewById(R.id.button_capture);
+        buttonCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listener = new PhotoHandler.dataPass() {
@@ -142,7 +158,7 @@ public class CameraActivity extends Activity {
         });
     }
 
-    /** A safe way to get an instance of the Camera object. */
+    /*** A safe way to get an instance of the Camera object. ***/
     public static Camera getCameraInstance() {
         Camera c = null;
         try {
@@ -156,24 +172,23 @@ public class CameraActivity extends Activity {
     public  void uploadImage(byte[] data) {
         if (data != null) {
             try {
-                // scale the image to save on bandwidth
+                // Scale the image to save on bandwidth
                 bitmap  = BitmapFactory.decodeByteArray(data, 0, data.length);
 
-                bitmap =  scaleBitmapDown(bitmap,1200);
+                scaledDownBitmap =  scaleBitmapDown(bitmap,1200);
 
-                callCloudVision(bitmap);
-                // mMainImage.setImageBitmap(bitmap);
+                callCloudVision(scaledDownBitmap);
 
             } catch (Exception e) {
                 System.out.print(e);
-                Log.d(TAG, "Image picking failed because " + e.getMessage());
+                Log.d(LOG_TAG, "Image picking failed because " + e.getMessage());
             }
         } else {
-            Log.d(TAG, "Image picker gave us a null image.");
+            Log.d(LOG_TAG, "Image picker gave us a null image.");
         }
     }
 
-// reduce the size of the image which we want to upload
+    // Reduce the size of the image which we want to upload
     public Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
 
         int originalWidth = bitmap.getWidth();
@@ -194,7 +209,7 @@ public class CameraActivity extends Activity {
         return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false);
     }
 
-// calling to cloud vision API
+    // Calling to Cloud vision API
     public  void callCloudVision(final Bitmap bitmap) throws Exception {
         // Switch text to loading
         // mImageDetails.setText(R.string.loading_message);
@@ -249,7 +264,7 @@ public class CameraActivity extends Activity {
                         base64EncodedImage.encodeContent(imageBytes);
                         annotateImageRequest.setImage(base64EncodedImage);
 
-                        // add the features we want
+                        // Add the features we want
                         annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
                             Feature labelDetection = new Feature();
                             labelDetection.setType("LANDMARK_DETECTION");
@@ -265,16 +280,15 @@ public class CameraActivity extends Activity {
                             vision.images().annotate(batchAnnotateImagesRequest);
                     // Due to a bug: requests to Vision API containing large images fail when GZipped.
                     annotateRequest.setDisableGZipContent(true);
-                    Log.d(TAG, "created Cloud Vision request object, sending request");
+                    Log.d(LOG_TAG, "Created Cloud Vision request object, sending request");
 
                     BatchAnnotateImagesResponse response = annotateRequest.execute();
                     convertResponseToString(response);
 
                 } catch (GoogleJsonResponseException e) {
-                    Log.d(TAG, "failed to make API request because " + e.getContent());
+                    Log.d(LOG_TAG, "Failed to make API request because " + e.getContent());
                 } catch (IOException e) {
-                    Log.d(TAG, "failed to make API request because of other IOException " +
-                            e.getMessage());
+                    Log.d(LOG_TAG, "Failed to make API request because of other IOException: " + e.getMessage());
                 }
                 return "Cloud Vision API request failed. Check logs for details.";
             }
@@ -292,42 +306,65 @@ public class CameraActivity extends Activity {
         List<Double> latitude = new ArrayList<Double>();
         List<Double> longitude = new ArrayList<Double>();
 
-        //need to check the availability of data, need to get coordinates
-        if(response.getResponses().get(0).getLandmarkAnnotations()!= null)
-        {
+        // *** Need to check the availability of data, need to get coordinates ***
+        if(response.getResponses().get(0).getLandmarkAnnotations()!= null) {
             for (EntityAnnotation annotation : response.getResponses().get(0).getLandmarkAnnotations()) {
                 LocationInfo info = annotation.getLocations().listIterator().next();
 
-                if(info !=null && !(annotation.getDescription().isEmpty()))
-                {
+                if(info !=null && !(annotation.getDescription().isEmpty())) {
                     placeName.add(annotation.getDescription());
                     latitude.add(info.getLatLng().getLatitude());
                     longitude.add(info.getLatLng().getLongitude());
                 }
 
                 if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+
+                    Log.d(LOG_TAG, "Creating intent to Result Activity...");
+
                     Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
-                    intent.putExtra("PLACE_NAME", placeName.get(0));
-                    intent.putExtra("PLACE_LATITUDE", latitude.get(0));
-                    intent.putExtra("PLACE_LONGITUDE", longitude.get(0));
 
-                    //converting bitmap to byte stream
-                    /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
+                    String landmarkName = placeName.get(0);
+                    Double placeLatitude = latitude.get(0);
+                    Double placeLongitude = longitude.get(0);
 
-                    intent.putExtra("USER_IMAGE", byteArray);*/
-                    finish();
-                    CameraActivity.this.startActivity(intent);
-                    break;
+                    intent.putExtra("PLACE_NAME", landmarkName);
+                    intent.putExtra("PLACE_LATITUDE", placeLatitude);
+                    intent.putExtra("PLACE_LONGITUDE", placeLongitude);
 
-                }
-                else
-                {
+                    Log.d(LOG_TAG,"Parameters to activity: PLACE_NAME: " + landmarkName + " PLACE_LATITUDE: " + placeLatitude + " PLACE_LONGITUDE: " + placeLongitude);
+
+                    // *** Save the image bitmap in the application cache temporal folder ***
+                    try {
+                        File outputDirectory = getCacheDir();
+
+                        Log.d(LOG_TAG, "Creating temporal image file...");
+
+                        File outputFile = File.createTempFile("temp", ".jpeg", outputDirectory);
+
+                        OutputStream outputStream = new FileOutputStream(outputFile);
+
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outputStream);
+
+                        outputStream.close();
+
+                        String userImageURI = Uri.fromFile(outputFile).toString();
+
+                        Log.d(LOG_TAG, "Passing to the Result Activity the image URI: " + userImageURI);
+
+                        intent.putExtra("USER_IMAGE_URI", userImageURI);
+
+                        // *** It will indicate to the Result Activity if we come or not from the Camera Activity ***
+                        intent.putExtra("FROM_CAMERA", true);
+
+                    } catch (IOException e) {
+                        Log.w(LOG_TAG, "There was an error saving temporal image on application cache...");
+                        e.printStackTrace();
+                    }
+
+                } else {
                     CameraActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
                             alertDialog.setTitle("Alert");
                             alertDialog.setMessage("Please Try Again");
@@ -341,16 +378,13 @@ public class CameraActivity extends Activity {
                                         }
                                     });
                             alertDialog.show();
-
                         }
                     });
 
                 }
-
             }
-        }
 
-        else{
+        } else {
             CameraActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -371,16 +405,11 @@ public class CameraActivity extends Activity {
             });
 
         }
-
-
     }
 
-
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             mCamera.release();
             finish();
         }
