@@ -1,11 +1,13 @@
 package com.minerva;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,6 +20,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -63,7 +67,7 @@ public class CameraActivity extends Activity {
 
     private CameraPreview mPreview;
 
-    public AlertDialog cameraLoadDialog;
+    public Dialog cameraLoadDialog;
 
     /*** Other class attributes ***/
 
@@ -144,12 +148,21 @@ public class CameraActivity extends Activity {
                 CameraActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        cameraLoadDialog = new AlertDialog.Builder(CameraActivity.this).create();
+
+                        cameraLoadDialog = new Dialog(CameraActivity.this);
+                        cameraLoadDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        cameraLoadDialog.setContentView(R.layout.activity_gallery);
+                        cameraLoadDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                        cameraLoadDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+                        cameraLoadDialog.show();
+
+                       /* cameraLoadDialog = new AlertDialog.Builder(CameraActivity.this).create();
                         cameraLoadDialog.setTitle("Loading");
                         cameraLoadDialog.setMessage("Please Wait");
                         cameraLoadDialog.show();
                         cameraLoadDialog.setCancelable(false);
-                        cameraLoadDialog.setCanceledOnTouchOutside(false);
+                        cameraLoadDialog.setCanceledOnTouchOutside(false);*/
                     }
                 });
                 mCamera.takePicture(null, null, new PhotoHandler(getApplicationContext(),listener));
@@ -355,6 +368,10 @@ public class CameraActivity extends Activity {
 
                         // *** It will indicate to the Result Activity if we come or not from the Camera Activity ***
                         intent.putExtra("FROM_CAMERA", true);
+                        cameraLoadDialog.dismiss();
+                        mCamera.release();
+                        finish();
+                        startActivity(intent);
 
                     } catch (IOException e) {
                         Log.w(LOG_TAG, "There was an error saving temporal image on application cache...");
@@ -388,13 +405,16 @@ public class CameraActivity extends Activity {
             CameraActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    cameraLoadDialog.dismiss();
                     AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
                     alertDialog.setTitle("Alert");
                     alertDialog.setMessage("Please Try Again");
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+
                                     dialog.dismiss();
+                                    mCamera.release();
                                     Intent intent = new Intent(CameraActivity.this , MainActivity.class);
                                     finish();
                                     startActivity(intent);

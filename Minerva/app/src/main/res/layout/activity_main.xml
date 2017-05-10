@@ -38,7 +38,7 @@
                 android:layout_weight="8.30"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/main" />
+                app:srcCompat="@mipmap/ic_launcher" />
 
             <FrameLayout
                 android:layout_width="match_parent"

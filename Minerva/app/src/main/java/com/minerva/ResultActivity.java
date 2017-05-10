@@ -119,8 +119,8 @@ public class ResultActivity extends AppCompatActivity {
             userImageURI = intent.getStringExtra("USER_IMAGE_URI");
             if(userImageURI != null){
                 Uri uri = Uri.parse(userImageURI);
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                userImageView.setImageBitmap(bitmap);
+                //bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                userImageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), uri));
 
                 // *** Save image on-long click for the case in which we come from the camera activity ***
                 if(fromCamera) {
@@ -267,7 +267,7 @@ public class ResultActivity extends AppCompatActivity {
 
                 OutputStream outputStream = new FileOutputStream(pictureFile);
 
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outputStream);
+                MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(userImageURI)).compress(Bitmap.CompressFormat.JPEG, 85, outputStream);
 
                 outputStream.close();
 
