@@ -34,6 +34,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,14 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialog.show();
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        Button gotIt = (Button) alertDialog.findViewById(R.id.gotIt);
+        gotIt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-               alertDialog.cancel();
+            public void onClick(View view) {
+                alertDialog.dismiss();
             }
-        }, 3000);
-
+        });
         // record the fact that the app has been started at least once
         //  settings.edit().putBoolean("my_first_time", false).commit();
     }
