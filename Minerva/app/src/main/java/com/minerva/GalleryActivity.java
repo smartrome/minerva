@@ -246,7 +246,7 @@ public class GalleryActivity extends AppCompatActivity {
                     longitude.add(info.getLatLng().getLongitude());
                 }
 
-                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){
 
                     //FIXME Watch out, we are getting inside this 'if' statement more than just one time
 

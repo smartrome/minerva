@@ -330,7 +330,8 @@ public class CameraActivity extends Activity {
                     longitude.add(info.getLatLng().getLongitude());
                 }
 
-                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){ //TODO find sth to replace 0.1010
+                // FIXME find something to replace sentinel value 0.1010
+                if(!(placeName.get(0).isEmpty()) && latitude.get(0)!= 0.1010 && longitude.get(0)!= 0.1010){
 
                     Log.d(LOG_TAG, "Creating intent to Result Activity...");
 

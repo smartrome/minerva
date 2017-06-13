@@ -15,12 +15,14 @@
     <string name="button_readmore">Read more</string>
     <string name="button_seeinfo">See Info</string>
     <string name="button_audioguide">Audio Guide</string>
-    <string name="button_maps">Maps</string>
+    <string name="button_maps">See on Maps</string>
     <string name="title_activity_full_article">FullArticleActivity</string>
     <string name="error_retrieving_wikipedia_extract">Oops!&#8230; We could not get more information for this place.</string>
     <string name="message_save_image_indication">Press on the image arrow if you want to save your picture!</string>
     <string name="message_landmark_welcome_camera">You are just in front of %s! Enjoy it</string>
-    <string name="message_landmark_welcome_gallery">You has been in front of %s! Amazing!</string>
+    <string name="message_landmark_welcome_gallery">You have been in front of %s! Amazing!</string>
+    <string name="message_maps_indication">The pin is placed in the place you have seen!</string>
+    <string name="header_extract">Some notes about this place</string>
 
     <!-- Strings related to the Settings Activity -->
     <string name="title_activity_settings">Settings</string>
@@ -29,5 +31,7 @@
     <string name="label_settings_photo_autosave">Image Auto-Save</string>
     <string name="label_settings_summary_photo_autosave">Automatically save on the phone images taken by the user.</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="language_default_value">en</string>
 
 </resources>

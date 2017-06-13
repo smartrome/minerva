@@ -5,7 +5,8 @@
         android:title="@string/label_settings_language"
         android:summary="@string/label_settings_summary_language"
         android:entries="@array/language"
-        android:entryValues="@array/languageAlias" />
+        android:entryValues="@array/languageAlias"
+        android:defaultValue="@string/language_default_value"/>
     <CheckBoxPreference
         android:key="pref_photo_autosave"
         android:title="@string/label_settings_photo_autosave"

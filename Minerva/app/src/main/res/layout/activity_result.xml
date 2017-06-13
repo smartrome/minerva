@@ -49,7 +49,6 @@
 
             </FrameLayout>
 
-
             <TextView
                 android:id="@+id/placeNameTextView"
                 android:layout_width="match_parent"
@@ -58,45 +57,29 @@
                 android:padding="10dp"
                 android:text="Place name"
                 android:textStyle="bold"
-                android:textSize="24sp"/>
+                android:textSize="22sp"/>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/seePlaceOnMapButton"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:weightSum="9"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/audioGuideButton"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_action_audio_guide"
-                    android:drawablePadding="10dp"
-                    android:text="@string/button_audioguide"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"/>
+                android:layout_height="50dp"
+                android:drawableLeft="@drawable/ic_action_see_maps"
+                android:drawablePadding="10dp"
+                android:padding="3dp"
+                android:text="@string/button_maps"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/seeBasicInfoButton"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_action_basic_info"
-                    android:drawablePadding="10dp"
-                    android:text="@string/button_seeinfo"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"/>
-                <Button
-                    android:id="@+id/seePlaceOnMapButton"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:drawableTop="@drawable/ic_action_see_maps"
-                    android:drawablePadding="10dp"
-                    android:text="@string/button_maps"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/header_extract"
+                android:textStyle="bold"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"/>
 
             <TextView
                 android:id="@+id/wikipediaInformationTextView"
@@ -106,7 +89,7 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="Wikipedia information"/>
 
             <Button
@@ -114,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_readmore"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -125,6 +108,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/rome">
+
+        <ImageView
+            android:id="@+id/goBackButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_action_go_back"/>
     </FrameLayout>
 
 </LinearLayout>

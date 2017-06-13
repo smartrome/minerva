@@ -45,7 +45,6 @@ public abstract class WikipediaServiceHandler{
         String url = serviceURL + articleName;
 
         // *** Adding redirect let Wikipedia know to redirect us to the article with more similarity on the name ***
-        //TODO Do more tests using the attribute on the Wikipedia API call request
         url = url + "&redirects=1";
 
         Log.i(LOG_TAG, "Wikipedia service handler calling service in: " + url);
@@ -86,7 +85,7 @@ public abstract class WikipediaServiceHandler{
                 if (responseCode >= 200 && responseCode < 300) {
                     succeeded(result);
                 } else {
-                    //TODO Manage failure cases
+                    // Manage failure cases
                 }
 
             }

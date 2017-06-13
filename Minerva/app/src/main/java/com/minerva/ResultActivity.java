@@ -26,13 +26,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -54,15 +50,13 @@ public class ResultActivity extends AppCompatActivity {
 
     protected TextView placeNameTextView;
 
-    protected Button seeInfoButton;
-
     protected Button openMapsButton;
-
-    protected Button audioGuideButton;
 
     protected TextView wikipediaInformationTextView;
 
     protected Button readMoreButton;
+
+    protected ImageView goBackButton;
 
     protected ImageView saveImageButton;
 
@@ -73,8 +67,6 @@ public class ResultActivity extends AppCompatActivity {
     /*** User Image URI and bitmap ***/
 
     protected String userImageURI;
-
-    protected Bitmap bitmap;
 
     protected Boolean imageAlreadySaved;
 
@@ -90,7 +82,7 @@ public class ResultActivity extends AppCompatActivity {
         try{
             Log.i(LOG_TAG, "Creating Result Activity... Retrieving elements from the caller activity...");
 
-            //TODO Unify the way in which the action bar is manipulated across all activities
+            // For a future version, unify the way in which the action bar is manipulated across all activities
             /*** Change background color and text color of the Action Bar ***/
             android.support.v7.app.ActionBar actionBar = getSupportActionBar();
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.rome)));
@@ -155,12 +147,6 @@ public class ResultActivity extends AppCompatActivity {
             wikipediaInformationTextView = (TextView) findViewById(R.id.wikipediaInformationTextView);
             callWikipediaService();
 
-            audioGuideButton = (Button) findViewById(R.id.audioGuideButton);
-            //TODO Implement audio-guides feature
-
-            seeInfoButton = (Button) findViewById(R.id.seeBasicInfoButton);
-            //TODO Implement basic utility info section
-
             openMapsButton = (Button) findViewById(R.id.seePlaceOnMapButton);
             openMapsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -187,6 +173,14 @@ public class ResultActivity extends AppCompatActivity {
                 }
             });
 
+            goBackButton = (ImageView) findViewById(R.id.goBackButton);
+            goBackButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ResultActivity.this.finish();
+                }
+            });
+
             // *** if automatic image saving enabled, automatically save the image when we come from the camera activity***
             if(fromCamera) {
                 final String autoSavePreferenceKey = "pref_photo_autosave";
@@ -205,7 +199,7 @@ public class ResultActivity extends AppCompatActivity {
 
         }catch(Exception e) {
             Log.e(LOG_TAG, "There has been an error creating the Result Activity. Check stack-trace for details...", e);
-            //TODO Handle behavior when onCreate() method on activity fails
+            // Handle behavior when onCreate() method on activity fails
         }
     }
 
@@ -235,6 +229,18 @@ public class ResultActivity extends AppCompatActivity {
                     saveImageToast.show();
                 }
             }, 3500);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        /*** When the activity is going to be onPause check cache in order to delete possible temporary file ***/
+
+        File temporaryFile = new File(getCacheDir(), "temp");
+        if(temporaryFile.exists()){
+            Log.d(LOG_TAG, "Removing temporary image file...");
         }
     }
 
@@ -280,9 +286,6 @@ public class ResultActivity extends AppCompatActivity {
                 values.put(MediaStore.MediaColumns.DATA, completeFilename);
 
                 getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-                // *** Delete temporary file ***
-                //TODO Delete temporary file
 
                 Log.i(LOG_TAG, "Image saved...");
 
