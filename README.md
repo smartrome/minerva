@@ -38,8 +38,7 @@ Development of an Android application which takes the camera mirror image, and r
 
 <tr>
 <td><a href="http://webthemez.com/techro-free-responsive-bootstrap-web-template/">Architecure</a></td>
-<td><a href="http://www.expertsystem.com/wp-content/uploads/2015/10/Google-CloudPlatform_VerticalLockup.png" target="_blank"><img src="
-http://www.expertsystem.com/wp-content/uploads/2015/10/Google-CloudPlatform_VerticalLockup.png" alt="techro" style="max-width:100%;"></a></td>
+<td><a href="https://github.com/smartrome/minerva/tree/master/Images/Google_Cloud_Platform.png" target="_blank"><img src="https://github.com/smartrome/minerva/tree/master/Images/Google_Cloud_Platform.png" alt="Google" style="max-width:100%;"></a></td>
 </tr>
 <tr>
 <td><a href="http://shapebootstrap.net/item/xeon-best-onepage-site-template/">Xeon</a></td>
