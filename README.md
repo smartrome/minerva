@@ -38,7 +38,9 @@ Development of an Android application which takes the camera mirror image, and r
 
 <tr>
 <td><a href="http://webthemez.com/techro-free-responsive-bootstrap-web-template/">Architecure</a></td>
-<td><a href="https://github.com/smartrome/minerva/tree/master/Images/Google_Cloud_Platform.png" target="_blank"><img src="https://github.com/smartrome/minerva/tree/master/Images/Google_Cloud_Platform.png" alt="Google" style="max-width:100%;"></a></td>
+<td ><a href="https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2017-q1-cloud-emea-gcp-bkws-freetrial&gclid=Cj0KEQjwv_fKBRCG8a3ao-OQuZ8BEiQAvpHp6LDAY7aITo_XtszV7aXjM1FCX-JS4NRP3WIV0Pdluq4aAqN78P8HAQ&dclid=CPXFr67L9dQCFZZmGwodjw0Hxg" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Google_Cloud_Platform.png" alt="responsive" style="max-width:100%;">Google Cloud Platform</a></td>
+
+</td>
 </tr>
 <tr>
 <td><a href="http://shapebootstrap.net/item/xeon-best-onepage-site-template/">Xeon</a></td>
@@ -59,7 +61,7 @@ Development of an Android application which takes the camera mirror image, and r
 </tr>
 <tr>
 <td><a href="https://github.com/puikinsh/gentelella">Gentelella</a></td>
-<td><a href="/therebelrobot/awesome-bootstrap/blob/master/screenshots/admin-gentelella.png" target="_blank"><img src="/therebelrobot/awesome-bootstrap/raw/master/screenshots/admin-gentelella.png" alt="responsive" style="max-width:100%;"></a></td>
+<td><a href="/therebelrobot/awesome-bootstrap/blob/master/screenshots/admin-gentelella.png" target="_blank"></a></td>
 </tr>
 <tr>
 <td><a href="http://www.prepbootstrap.com/bootstrap-theme/lightway-admin">lightway</a></td>
