@@ -30,22 +30,32 @@ Development of an Android application which takes the camera mirror image, and r
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Screenshot</th>
+<th>Classification</th>
+<th>Explanation</th>
 </tr>
 </thead>
 <tbody>
 
 <tr>
-<td><a href="http://webthemez.com/techro-free-responsive-bootstrap-web-template/">Architecure</a></td>
-<td ><a href="https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2017-q1-cloud-emea-gcp-bkws-freetrial&gclid=Cj0KEQjwv_fKBRCG8a3ao-OQuZ8BEiQAvpHp6LDAY7aITo_XtszV7aXjM1FCX-JS4NRP3WIV0Pdluq4aAqN78P8HAQ&dclid=CPXFr67L9dQCFZZmGwodjw0Hxg" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Google_Cloud_Platform.png" alt="responsive" style="max-width:100%;">Google Cloud Platform</a></td>
-
+<td><a href="https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2017-q1-cloud-emea-gcp-bkws-freetrial&gclid=Cj0KEQjwv_fKBRCG8a3ao-OQuZ8BEiQAvpHp6MPpBnrZg-kPmedyPw4o_k5WZXgR5C6CugyOm-nYLH8aAql38P8HAQ&dclid=CLDr48vU9dQCFeehUQodR7UHuQ">Server Side</a></td>
+<td width="100%" >
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Google_Cloud_Platform.png" alt="responsive" height="194" height="171" style="max-width:100%"></a>
+<p>We used Google Cloud Platform as the backbone of Minerva</p>
 </td>
 </tr>
 <tr>
-<td><a href="http://shapebootstrap.net/item/xeon-best-onepage-site-template/">Xeon</a></td>
-<td><a href="/therebelrobot/awesome-bootstrap/blob/master/screenshots/spa-xeon.png" target="_blank"><img src="/therebelrobot/awesome-bootstrap/raw/master/screenshots/spa-xeon.png" alt="xeon" style="max-width:100%;"></a></td>
-</tr></tbody></table>
+<td><a href="">API</a></td>
+<td width="100%" >
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/googlemap.png" alt="responsive" height="194" height="171"  style="max-width:100%;"></a>
+<p>We used Google Map API as our location Service</p>
+</td></tr>
+<tr>
+<td><a href="">API</a></td>
+<td width="100%" >
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/googlemap.png" alt="responsive" height="194" height="171"  style="max-width:100%;"></a>
+<p>We used Google Map API as our location Service</p>
+</td></tr>
+</tbody></table>
 <h3><a id="user-content-admin-dashboards" class="anchor" href="#admin-dashboards" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Admin Dashboards</h3>
 <table>
 <thead>
