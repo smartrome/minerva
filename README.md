@@ -20,3 +20,5 @@ for enriching the cultural experience in the Eternal City.</b>
   <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation">Second Presentation</a> - User Experience and System Design.</p>
   <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233">Third Presentation</a> - Introductory slides used for the presentation of our MVP.</p>
   <p>- <a href="https://youtu.be/ESH9aoOsrTY">Minerva youtube presentation</a> - Minerva youtube presentation</p>
+  <p>- <a href="https://youtu.be/WdBYzg6CeVg">Minerva youtube Gallery Test</a> - Minerva youtube Gallery Test</p>
+
