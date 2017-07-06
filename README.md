@@ -26,4 +26,7 @@ Please find below our contacts and our last project documentation (slides, video
   <p>- <a href="https://www.slideshare.net/RaziehAkbari/minerva-exam-presentation">Exam Presentation</a> - Exam Presentation held on La Sapienza University July, 7th 2017 <img src="http://www.iconsdb.com/icons/preview/deep-pink/new-xxl.png" height="30" width="30"></p>
   <p>- <a href="https://youtu.be/ESH9aoOsrTY">Minerva Presentation</a> - A nice presentation on YouTube of our application! <img src="http://www.iconsdb.com/icons/preview/deep-pink/new-xxl.png" height="30" width="30"></p>
   <p>- <a href="https://youtu.be/WdBYzg6CeVg">Minerva Gallery Test</a> - A video on YouTube testing using an image of the device's gallery <img src="http://www.iconsdb.com/icons/preview/deep-pink/new-xxl.png" height="30" width="30"></p>
+  
+   <p>- <a href="  https://youtu.be/So76zOb8fTU">Minerva Camera Test</a> - A video on YouTube testing using an image of the device's Camera <img src="http://www.iconsdb.com/icons/preview/deep-pink/new-xxl.png" height="30" width="30"></p>
+   
   <p>- <a href="https://www.slideshare.net/juliocesarcarrasquel/minerva-solution-technical-report"> Technical Report </a> - A paper presenting a technical review of the application as well as other general considerations. <img src="http://www.iconsdb.com/icons/preview/deep-pink/new-xxl.png" height="30" width="30"></p>
