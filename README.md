@@ -68,7 +68,7 @@ Development of an Android application which takes the camera mirror image, and r
 <tr>
 <td><p>Main Page</p></td>
 <td><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-52.jpg" height="40%" height="40%" alt="responsive" style="max-width:100%;">
-<img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-52.jpg" height="40%" height="40%" alt="responsive" style="max-width:100%;"></td>
+<img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-07_00-22-07.jpg" height="40%" height="40%" alt="responsive" style="max-width:100%;"></td>
 </tr>
 <tr>
 <td><a href="https://github.com/puikinsh/gentelella">Gentelella</a></td>
