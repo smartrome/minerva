@@ -5,6 +5,19 @@
 for enriching the cultural experience in the Eternal City.</b>
 
 <b>Our Objective:</b> Development of an Android application which takes the camera mirror image, and retrieves from the cloud interactive information about the place it's aiming. Currently the landmark recognition feature provided by the Google Cloud Vision API. Click <a href="https://cloud.google.com/vision/?gclid=CL2PjYatitMCFUORGwodg-kJpQ">here</a> to know more about this technology offered by Google. The Minerva application has been thought for being used in Rome, but the application offers the landmark recognition service world-wide.
+<ul>
+<li><a href="#templates">Templates</a>
+<ul>
+<li><a href="#single-page-templates">Single Page Templates</a></li>
+<li><a href="#admin-dashboards">Admin Dashboards</a></li>
+<li><a href="#retro-themes">Retro Themes</a></li>
+<li><a href="#ui-kits">UI Kits</a></li>
+</ul>
+</li>
+<li><a href="#external-lists">External Lists</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#contributions">Contributions</a></li>
+</ul>
 
 <b>Why Minerva?:</b> Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
 
