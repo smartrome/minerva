@@ -16,8 +16,15 @@ for enriching the cultural experience in the Eternal City.</b>
 </ul>
 </li>
 <li><a href="#why">Why Minerva?</a></li>
-<li><a href="#license">License</a></li>
+<ul>
+<li><a href="#pre"></a>That is Why</li>
+</ul>
+<li><a href="#slide">Slides</a></li>
+<li><a href="#test">Tests Videos</a></li>
 <li><a href="#contributions">Contributions</a></li>
+
+
+
 </ul>
 <h2><a id="user-content-templates" class="anchor" href="#Objectives" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Our Objectives</h2>
 
@@ -102,22 +109,19 @@ Development of an Android application which takes the camera mirror image, and r
 </tr>
 </thead>
 <tbody>
+<tr>
+<td ><p>ALL</p></td>
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/road.png" height="70%" height="70%" alt="responsive" style="max-width:100%;"></td>
+</tr>
 </tbody></table>
-
-
-
-
-
-
-
 
 
 <h2><a id="user-content-templates" class="anchor" href="#why" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why Minerva?</h2>
 Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
 
-Please find below our contacts and our last project documentation (slides, videos and a technical report about the application). The source code is also available for download in this repository. Any feedback for the project is greatly welcome :-)
-
-
+<video width="320" height="240" controls id="video">
+    <source src="https://youtu.be/ESH9aoOsrTY" type="video/mp4">
+</video>
 
 <h2><a id="user-content-templates" class="anchor" href="#contributions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributions</h2>
 
