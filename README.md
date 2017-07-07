@@ -186,7 +186,6 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
     Series
 </td>
 <td align="middle">
-    link
 </td>
 </tr>
 </thead>
