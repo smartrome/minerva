@@ -10,7 +10,7 @@ for enriching the cultural experience in the Eternal City.</b>
 <td>
 <ul>
 <li><a href="#objectives">Objectives</a></li>
-<li><a href="#good&nbsp;to&nbsp;know">Good to Know</a>
+<li><a href="#good&nbspto&nbspknow">Good to Know</a>
 <ul>
 <li><a href="#architecture">Architecture</a></li>
 <li><a href="#design">Design</a></li>
