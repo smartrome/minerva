@@ -10,17 +10,17 @@ for enriching the cultural experience in the Eternal City.</b>
 <td>
 <ul>
 <li><a href="#objectives">Objectives</a></li>
-<li><a href="#Good to Know">Good to Know</a>
+<li><a href="#good to know">Good to Know</a>
 <ul>
-<li><a href="#Architecture">Architecture</a></li>
+<li><a href="#architecture">Architecture</a></li>
 <li><a href="#design">Design</a></li>
-<li><a href="#Roud Map">Roud Map</a></li>
+<li><a href="#Roud map">Roud Map</a></li>
 <li><a href="#videos">Videos</a></li>
 </ul>
 </li>
-<li><a href="#Why Minerva?">Why Minerva?</a></li>
-<li><a href="#Slides">Slides</a></li>
-<li><a href="#Tests Videos">Tests Videos</a></li>
+<li><a href="#Why minerva?">Why Minerva?</a></li>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#tests videos">Tests Videos</a></li>
 <li><a href="#report">Report</a></li>
 <li><a href="#contributions">Contributions</a></li>
 </td>
