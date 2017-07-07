@@ -80,28 +80,28 @@ Development of an Android application which takes the camera mirror image, and r
 <tbody>
 <tr>
 <td><p>Main Page</p></td>
-<td align="middle"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-52.jpg" width="240" height="426" alt="responsive">
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-52.jpg" width="240" height="426" alt="responsive">
 <img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-07_00-22-07.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
 <td><p>Gallery</p></td>
-<td align="middle"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-47.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-47.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
 <td ><p>Camera</p></td>
-<td align="middle"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-40.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-40.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
 <td ><p>Response</p></td>
-<td align="middle"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-06_12-12-30.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-07-06_12-12-30.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 
 <tr>
 <td ><p>Wiki page</p></td>
-<td align="middle"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-22.jpg" width="240" height="426" alt="responsive"></td>
+<td align="middle" width="100%"><img src="https://github.com/smartrome/minerva/blob/master/Images/photo_2017-06-23_11-39-22.jpg" width="240" height="426" alt="responsive"></td>
 </tr>
 </tbody></table>
 
