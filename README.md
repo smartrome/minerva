@@ -9,18 +9,18 @@ for enriching the cultural experience in the Eternal City.</b>
 <tr>
 <td>
 <ul>
-<li><a href="#objectives">objectives</a></li>
-<li><a href="#good">Good to Know</a>
+<li><a href="#Objectives">Objectives</a></li>
+<li><a href="#Good to Know">Good to Know</a>
 <ul>
-<li><a href="#arc">Architecture</a></li>
+<li><a href="#Architecture">Architecture</a></li>
 <li><a href="#design">Design</a></li>
-<li><a href="#road">Roud Map</a></li>
-<li><a href="#video">Videos</a></li>
+<li><a href="#Roud Map">Roud Map</a></li>
+<li><a href="#videos">Videos</a></li>
 </ul>
 </li>
-<li><a href="#why">Why Minerva?</a></li>
-<li><a href="#slide">Slides</a></li>
-<li><a href="#test">Tests Videos</a></li>
+<li><a href="#Why Minerva?">Why Minerva?</a></li>
+<li><a href="#Slides">Slides</a></li>
+<li><a href="#Tests Videos">Tests Videos</a></li>
 <li><a href="#report">Report</a></li>
 <li><a href="#contributions">Contributions</a></li>
 </td>
@@ -31,7 +31,7 @@ for enriching the cultural experience in the Eternal City.</b>
 </table>
 </ul>
 
-<h2><a class="anchor" href="#objectives" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>objectives</h2>
+<h2><a class="anchor" href="#objectives" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectives</h2>
 
 Development of an Android application which takes the camera mirror image, and retrieves from the cloud interactive information about the place it's aiming. Currently the landmark recognition feature provided by the Google Cloud Vision API. Click <a href="https://cloud.google.com/vision/?gclid=CL2PjYatitMCFUORGwodg-kJpQ">here</a> to know more about this technology offered by Google. The Minerva application has been thought for being used in Rome, but the application offers the landmark recognition service world-wide.
 
