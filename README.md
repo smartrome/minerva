@@ -172,7 +172,7 @@ the landmark.
 Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Through her name we want to transmit to the user the feeling that our solution in development is the right choice for letting him/her know quickly about whichever cultural spot that he/she might find in Rome.
 </td>
 <td align="middle">
- <a href="https://youtu.be/ESH9aoOsrTY"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;"> </a>
+ <a href="https://youtu.be/ESH9aoOsrTY"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" eight="45" width="45" alt="responsive" style="max-width:100%;"></p>See the application video on YouTube</a>
 </td>
 </tr>
 </tbody>
@@ -196,7 +196,7 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
  First
  </td>
 <td >
- <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;"> Team presentation and project proposal</a>
+ <a href="http://www.slideshare.net/juliocesarcarrasquel/team-presentation-and-project-proposal"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" width="60" height="39" alt="responsive"> Team presentation and project proposal</a>
 </td>
 </tr>
 
@@ -205,7 +205,7 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
  Second
  </td>
 <td >
- <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;">  User Experience and System Design </a>
+ <a href="https://www.slideshare.net/RaziehAkbari/minerva-second-presentation"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" width="60" height="39" alt="responsive">  User Experience and System Design </a>
 </td>
 </tr>
 
@@ -214,7 +214,7 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
  Second
  </td>
 <td >
- <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;">   Introductory slides used for the presentation of our MVP </a>
+ <a href="https://www.slideshare.net/RaziehAkbari/minerva-75560233"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" width="60" height="39" alt="responsive">   Introductory slides used for the presentation of our MVP </a>
 </td>
 </tr>
 
@@ -223,7 +223,7 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
  Second
  </td>
 <td >
- <a href="https://www.slideshare.net/RaziehAkbari/minerva-exam-presentation"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;"> Final presentation </a>
+ <a href="https://www.slideshare.net/RaziehAkbari/minerva-exam-presentation"><img src="https://github.com/smartrome/minerva/blob/master/Images/pp.jpg" width="60" height="39" alt="responsive"> Final presentation </a>
 </td>
 </tr>
 </tbody>
@@ -234,17 +234,17 @@ Minerva was the Roman goddess of wisdom, knowledge & the sponsor of arts. Throug
 <table>
 <thead>
 <tr>
-<td>Type</td>
-<td>link</td>
+<td><b>Video</b></td>
+<td></td>
 </tr>
 </thead>
 <tbody>
 <tr><td>Camera Test</td>
-<td><a href="https://youtu.be/So76zOb8fTU"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;"> A video on YouTube testing using an image of the device's Camera </a></td>
+<td><a href="https://youtu.be/So76zOb8fTU"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" height="40" width="40" alt="responsive" style="max-width:100%;"> A video on YouTube testing using an image of the device's Camera </a></td>
 </tr>
 </tbody>
 <tr><td>Gallery Test</td>
-<td><a href="https://youtu.be/WdBYzg6CeVg"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" height="10%" height="5%" alt="responsive" style="max-width:100%;"> A video on YouTube testing using an image of the device's gallery </a></td>
+<td><a href="https://youtu.be/WdBYzg6CeVg"><img src="https://github.com/smartrome/minerva/blob/master/Images/ISST-Videos.jpg" height="40" width="40" alt="responsive" style="max-width:100%;"> A video on YouTube testing using an image of the device's gallery </a></td>
 </tr>
 </tbody>
 </table>
