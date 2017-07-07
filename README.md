@@ -52,20 +52,20 @@ Development of an Android application which takes the camera mirror image, and r
 <tr>
 <td><a href="https://cloud.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2017-q1-cloud-emea-gcp-bkws-freetrial&gclid=Cj0KEQjwv_fKBRCG8a3ao-OQuZ8BEiQAvpHp6MPpBnrZg-kPmedyPw4o_k5WZXgR5C6CugyOm-nYLH8aAql38P8HAQ&dclid=CLDr48vU9dQCFeehUQodR7UHuQ">Server Side</a></td>
 <td width="100%"  align="middle" >
-<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Google_Cloud_Platform.png" alt="responsive" height="128" height="112" style="max-width:100%"></a>
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Google_Cloud_Platform.png" alt="responsive" height="91" height="74" style="max-width:100%"></a>
 <p>We used Google Cloud Platform as the backbone of Minerva</p>
 </td>
 </tr>
 <tr>
 <td><a href="">API</a></td>
 <td width="100%"  align="middle" >
-<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/googlemap.png" alt="responsive" height="128" height="112" style="max-width:100%;"></a>
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/googlemap.png" alt="responsive" height="91" height="74"  style="max-width:100%;"></a>
 <p>We used Google Map API as our location Service</p>
 </td></tr>
 <tr>
 <td><a href="">API</a></td>
 <td width="100%" align="middle" >
-<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Wikipedia_Logo_1.0.png" alt="responsive" height="128" height="112" style="max-width:100%;"></a>
+<a href="" target="_blank"><img src="https://github.com/smartrome/minerva/blob/master/Images/Wikipedia_Logo_1.0.png" alt="responsive" height="91" height="74" style="max-width:100%;"></a>
 <p>We used Wikipeda API to gather Information about the place</p>
 </td></tr>
 </tbody></table>
