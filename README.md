@@ -107,6 +107,47 @@ Development of an Android application which takes the camera mirror image, and r
 
 <h3>Communication with Services</h3>
 
+<img src="https://github.com/smartrome/minerva/blob/master/Images/architecture.png">
+
+In the left side of the picture we have the Minerva solution which is installed in an Android device. In its first version the
+application has been developed to work on Android platforms that goes from the Android API Level 17 (version
+4.2) up to the API Level 25 (version 7.1). In addition to do that it is completely assumed the provision of a
+camera on the device. The application runs according the activity flow sequence shown in the previous section.
+Whenever the application selects an image (either from the camera through the CameraActivity or from the
+device image gallery through the GalleryActivity) it is sent a HTTP POST request message to the Google Cloud
+Vision API. The Google Cloud Vision API address is https://vision.googleapis.com/v1/images:annotate?
+key=appKey where appKey refers to the API that is given to the application having registered it within the Cloud
+Vision API internal system. The request message also transports a JSON message within its payload in which is
+inserted the landmark image compressed as well as an indication about which feature of the Vision API we want
+to use which in the application case is landmark recognition.
+
+Having received the landmark name plus its coordinates, this is internally saved in the application state, and then
+it is presented to the user the ResultActivity interface. Within this module it is
+called the service of the Wikipedia API. For this case the request is a simple
+HTTP GET message in which the request attributes are put in the URL query string. The following string is a
+call example towards the Wikipedia API.
+
+https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=Colosseum&redirects=1
+
+The basic address is of the API is https://en.wikipedia.org/w/api.php. The rest of the string are the parameters
+used for the call. The format parameter explains how we expect to receive the data, in this case we set JSON.
+The action and prop attributes indicate that this call wants to query article extracts. The motivation of this
+specification is because the Wikipedia API is more than query articles. The Wikipedia API provides other
+services such as modify articles meta-data or even modify an article. The exintro parameter specify that we are
+only interested just in the extract introduction instead of the whole article. The explaintext parameter indicates to
+the service that we want to receive the article extract in plain-text format (e.g. without HTML or other special
+tags).
+
+The titles parameter indicates which is the article extract that we are looking for (e.g. the extract about the
+Colosseum). Finally, the redirects parameter will redirect the search to the article extract with more similarity on
+the name. This last parameter is very useful since we are working with data and names that come from different
+systems (Google and Wikipedia respectively). For instance, if the Google Cloud Vision API gives as a response
+“Trevi Fountain”, and in other hand the article name about the Trevi Fountain is called instead “The Fountain of
+Trevi” the redirects parameter will achieve the match between these two strings thereby assuring a correct
+response.The response of this service call to the Wikipedia API will be a JSON object that will embedded the article in
+one of its attributes. The parsing is handling by the application in order to show to the user the information about
+the landmark.
+
 <h3><a id="user-content-retro-themes" class="anchor" href="#road map" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Road Map</h3>
 <table>
 <thead>
